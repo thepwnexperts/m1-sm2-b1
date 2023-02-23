@@ -82,7 +82,7 @@ router.post('/otp',async (req,res)=> {
     const to=req.body.from;
    const mails =  await verify.findOne({mail: to});
    if (!mails) {
-    res.send("otp not found ,try to resend").status(200);
+    res.send("otp not found ,try to resend").status(400);
     return ;
    }
    //console.log(mails);
