@@ -1,3 +1,5 @@
+baseurl =>  http://localhost:3000/verify/
+
 / - This endpoint generates a 6-digit OTP (one-time password), sends it via email to the specified recipient, and saves the OTP and recipient's email address to a MongoDB database.
 
 Request body parameters:
