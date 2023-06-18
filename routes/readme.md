@@ -1,5 +1,5 @@
 # This Vulnerable From Response Manipulation Vulnerability
-# API Endpoints
+# API Endpoints 
 
 This repository contains the implementation of API endpoints using Node.js and Express.js. These endpoints provide functionality related to email verification and OTP (One-Time Password) generation.
 
@@ -44,6 +44,8 @@ Before running the API, make sure you have the following prerequisites installed
    ```
 
 ## Endpoints
+
+**Base Url:** `host:port(3001)/otp`
 
 ### Generate OTP and Send Email
 
