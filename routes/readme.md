@@ -1,25 +1,118 @@
-baseurl =>  http://localhost:3000/otp/
+# This Vulnerable From Response Manipulation Vulnerability
+# API Endpoints
 
-/ - This endpoint generates a 6-digit OTP (one-time password), sends it via email to the specified recipient, and saves the OTP and recipient's email address to a MongoDB database.
+This repository contains the implementation of API endpoints using Node.js and Express.js. These endpoints provide functionality related to email verification and OTP (One-Time Password) generation.
 
-Request body parameters:
+## Prerequisites
 
-to (required) - The email address to send the OTP to.
-Response:
+Before running the API, make sure you have the following prerequisites installed:
 
-200 OK with a message of "success" if the OTP was successfully sent and saved.
-400 Bad Request with an error message if there was a problem saving the OTP to the database.
-500 Internal Server Error with an error message if there was a problem checking the database for an existing email.
+- Node.js
 
+## Installation
 
+1. Clone the repository:
 
-/verify - This endpoint retrieves the OTP that was generated and sent to the specified email address.
+   ```bash
+   git clone https://github.com/thepwnexperts/m1-sm2-b1.git
+   ```
 
-Request body parameters:
+2. Change into the project directory:
 
-from (required) - The email address that the OTP was sent to.
-Response:
+   ```bash
+   cd m1-sm2-b1
+   ```
 
-200 OK with the OTP as the response body if the OTP was found in the database.
-400 OK with a message of "otp not found, try to resend" if the OTP was not found in the database.
-500 Internal Server Error with an error message if there was a problem deleting the OTP from the database.
+3. Install the dependencies:
+
+   ```bash
+   npm install
+   ```
+
+4. Set up the required environment variables:
+
+   - `host`: SMTP host for sending emails
+   - `port`: SMTP port
+   - `user`: SMTP username
+   - `pass`: SMTP password
+   - `waf`: Enable/disable Web Application Firewall (true/false)
+
+5. Start the server:
+
+   ```bash
+   npm start
+   ```
+
+## Endpoints
+
+### Generate OTP and Send Email
+
+**URL:** `/`
+
+**Method:** `POST`
+
+**Description:** Generates a 6-digit OTP and sends it to the provided email address.
+
+**Request Body:**
+
+| Parameter | Type   | Description              |
+|-----------|--------|--------------------------|
+| `to`      | String | Recipient email address  |
+
+**Example Request:**
+
+```json
+{
+  "to": "recipient@example.com"
+}
+```
+
+**Example Response:**
+
+```text
+success
+```
+
+### Verify OTP
+
+**URL:** `/verify`
+
+**Method:** `POST`
+
+**Description:** Verifies the OTP sent to the specified email address.
+
+**Request Body:**
+
+| Parameter | Type   | Description              |
+|-----------|--------|--------------------------|
+| `from`    | String | Sender email address     |
+
+**Example Request:**
+
+```json
+{
+  "from": "sender@example.com"
+}
+```
+
+**Example Response:**
+
+```text
+123456
+```
+
+## Error Handling
+
+In case of errors, the API will return an appropriate HTTP status code along with an error message.
+
+- `400 Bad Request`: Invalid request parameters or OTP not found.
+- `500 Internal Server Error`: Internal server error occurred.
+
+## Contributing
+
+Contributions are welcome! If you find any issues or want to enhance the functionality of the API, feel free to open a pull request.
+
+## License
+
+This project is licensed under the [GPL-3.0 License](LICENSE).
+```
