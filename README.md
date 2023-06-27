@@ -1,4 +1,3 @@
-Certainly! Here's the updated README file with the modified license and repository information:
 
 # m1-sm2-b1(validation at client side not secure )
 
